@@ -8,8 +8,32 @@ Question 1
 
 - Plot the data on a 2-D scatter plot and mark by hand the boundaries of the ideal clusters that you would like discovered in this dataset. 		
   
-  ![image](../master/2a.png)
-   
+  ![image](../master/2a.PNG) 
+  Refer to Dataset.PNG for the scatterplot of the data.
+  
+  I have marked the clusters intuitively based on the alike nature of the points. Please refer to the image (Intuitive Clusters.JPEG) for the marked clusters.
+  
+Question 2
+------------
+  
+- Run the k-means algorithm for k = 3, 5, 7, 9, 11, 13, 15, 17 and 19. Plot the total SSE and BIC values for the above values of k. 
+  What is the best number of clusters for this dataset? How did you find the best number of clusters, briefly explain.
+  
+- **SSE** :: Sum of squared Error is the sum of all euclidian distances from each data point to the centroid of a cluster. A lower value suggests that the cluster is closely packed.
+- **BIC** :: It is one of the criterion for model selection among a finite set of models. Lower value indicates a good model.
+  
+  We would be using both SSE and BIC values to choose the best k value for the dataset in use.
+  
+-Please refer to the imgae sse_bic to find that, the knee point is obtained at the k =11 ie., the change in SSE or BIC is not very significant or almost remains same when compared to the other k values earlier in the curve. 
+  Though the errors of the higher k value is low it is deceptive in the sense that it breaks the original clusters into smaller clusters and so the error decreases.
+  **Hence k =11 is chosen as the best number of clusters.**
+
+Question 3
+------------  
+- For the best number of clusters selected above, plot the scatter plot of the data showing the points of each cluster with a different color/symbol. 
+  Mark the points on the scatter plot that belong to clusters other than what your intuition says. Why did k-means algorithm place them in these different clusters – explain very briefly.   
+
+
   
   ```
    while(flag=='T'):    
