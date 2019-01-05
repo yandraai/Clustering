@@ -3,7 +3,7 @@ Linear Regression
 
 - Data set Used: HW4GaussianClustersData (Please look in DATA folder)
 
-Question 1
+Question 1 djgsdfh
 ------------
 
 - Plot the data on a 2-D scatter plot and mark by hand the boundaries of the ideal clusters that you would like discovered in this dataset. 		
@@ -15,7 +15,7 @@ Question 1
   
   I have marked the clusters intuitively based on the alike nature of the points. 
   
-  ![image](../master/Intuitive Clusters.jpeg) 
+  ![image](../master/Intuitive_Clusters.jpeg) 
   
   
 Question 2
@@ -41,11 +41,11 @@ Question 3
 
 - Scatter Plot of the Clusters Formed:
  
- ![image](../master/Kmeans clusters.png)
+ ![image](../master/Kmeans_clusters.png)
 
 - Kmeans differed from my intuition for the marked points: 
  
- ![image](../master/points that differd.png)
+ ![image](../master/points_that_differd.png)
  
 - Commments on the points that differed in the above intuite and k means clusters :
 
