@@ -8,10 +8,15 @@ Question 1
 
 - Plot the data on a 2-D scatter plot and mark by hand the boundaries of the ideal clusters that you would like discovered in this dataset. 		
   
-  ![image](../master/2a.PNG) 
-  Refer to Dataset.PNG for the scatterplot of the data.
+  Scatter plot of the data points:
   
-  I have marked the clusters intuitively based on the alike nature of the points. Please refer to the image (Intuitive Clusters.JPEG) for the marked clusters.
+  ![image](../master/Dataset.PNG) 
+  
+  
+  I have marked the clusters intuitively based on the alike nature of the points. 
+  
+  ![image](../master/Intuitive Clusters.jpeg) 
+  
   
 Question 2
 ------------
@@ -24,8 +29,9 @@ Question 2
   
   We would be using both SSE and BIC values to choose the best k value for the dataset in use.
   
--Please refer to the imgae sse_bic to find that, the knee point is obtained at the k =11 ie., the change in SSE or BIC is not very significant or almost remains same when compared to the other k values earlier in the curve. 
+- Please refer to the imgae sse_bic to find that, the knee point is obtained at the k =11 ie., the change in SSE or BIC is not very significant or almost remains same when compared to the other k values earlier in the curve. 
   Though the errors of the higher k value is low it is deceptive in the sense that it breaks the original clusters into smaller clusters and so the error decreases.
+  
   **Hence k =11 is chosen as the best number of clusters.**
 
 Question 3
@@ -33,81 +39,83 @@ Question 3
 - For the best number of clusters selected above, plot the scatter plot of the data showing the points of each cluster with a different color/symbol. 
   Mark the points on the scatter plot that belong to clusters other than what your intuition says. Why did k-means algorithm place them in these different clusters – explain very briefly.   
 
-
-  
-  ```
-   while(flag=='T'):    
-    print(count+1,"- feature Regression Models","\n")
-    count=count+1
-    counter=0
-    i_vector=[]
-    aic_value=[]  
-    lmwhite=[]
-    for i in df.columns:
-        if i=="quality" or feature.find(i)>0:
-            continue;
-        if feature=="" :
-            lmwhite_dummy=smf.ols(formula='quality~'+ i,data=df).fit()
-        else :
-            lmwhite_dummy=smf.ols(formula='quality~ '+feature+"+"+ i ,data=df).fit()
-        i_vector.append(feature+ "+"+i)    
-        lmwhite.append(lmwhite_dummy)
-        r2_value_dummy=(lmwhite_dummy.rsquared)
-        r2_value.append(r2_value_dummy)
-        aic_value_dummy=(lmwhite_dummy.aic)
-        aic_value.append(aic_value_dummy)
-        print("Model:: ","Feature:",(feature+ "+"+i).strip("+"),"R2_Value:",
-              round(r2_value_dummy,4),"AIC_Value:",round(aic_value_dummy,6),"\n") 
-    
-    i_vec.append(i_vector)
-    aic.append(aic_value)
-    r2.append(r2_value)
-    feature_num = r2_value.index(max(r2_value))
-    feature=i_vector[feature_num]
-    print("Best Feature with highest r2 value:",feature.strip("+"),"R2_Value : ",
-          round(r2_value[feature_num],4),"AIC_Value:",round(aic_value[feature_num],6),"\n")
-    r2_value=[]
-    best_aic.append(aic_value[feature_num])  
-    bestlm.append(lmwhite[feature_num])
-    
-    # Stopping Condition
-    for j in aic_value:
-        if j>=best_aic[-2]:
-            counter=counter+1  
-        if counter==len(aic_value)-1:
-            flag='F'
-  ```
-
- Question 2
------------- 
-- Report the features included, their coefficients, and p-values for the coefficients in the best model found above. Comment on the magnitudes of the p-values.  
-
-  >8- Feature Regression model best fitting to the data with optimal R2 and AIC value is:
-  >Best Feature with highest r2 value: alcohol+volatile_acidity+residual_sugar+free_sulfur_dioxide+density+pH+sulphates+fixed_acidity R2_Value: 0.2818 AIC_Value: 11106.287754
-  
-  P_Value:  The p-values for the coefficients indicate whether these relationships are statistically significant. 
-            Along with the coefficients, p values provide enough evidence to reject the otherwise taken null hypothesis instead of the regression line obtained.
-			
-        A higher Pvalue indicate that the variable is not significant for the regression model, whereas a lower magnitude 
-		provides enough evidence that the inclusion of the variable is significant for the regression model and that the target value is dependent on the variable.
-		
-  ![hyperlink](p Values Explained):http://blog.minitab.com/blog/adventures-in-statistics-2/how-to-interpret-regression-analysis-results-p-values-and-coefficients 
-    
-	In our model all the pvalues are almost equal to 0.00 which means that they are all very much significant in regression model and contribute in the prediction.
-
- Question 3
------------- 	
--Find the five wines that have the largest magnitudes of difference between the predicted and the actual wine-quality values. Look at the regression model, the rest of the data, and comment on why you think these wines are outliers.
+- Scatter Plot of the Clusters Formed:
  
- #Fitting the obtained Regression line on the data to predict the value:
-	
-	```
-	  pred=bestlm[7].predict(X_Val)
-	  error=abs(pred)
-	```
-  
-  The quality groups of 3,9 are only 25 among the 4898. The very little proportion of these stay as the outliers providing very little learning data for the regression models. 
-  If the model is fitted to include these as well, it would lead to overfitting of the data.
+ ![image](../master/Kmeans clusters.png)
 
+- Kmeans differed from my intuition for the marked points: 
+ 
+ ![image](../master/points that differd.png)
+ 
+- Commments on the points that differed in the above intuite and k means clusters :
+
+  - K means clustering is a **center based clustering technique**. Hence, to a greater extent depends on the initial centroids chosen. Now once the centroids are chosen initially, iteratively the distances are calculated from all the other data points to the centroid and all the data points nearest to the centroid are made into a cluster.
+   
+  - **Hence, K means tend to give the globular shaped structures and may not be very effective for others.**
+   
+  - In our example as well, the points marked are all points that are marked are nearer to the centroids that the k means chose and so are placed in that way, which is different from the intuition.
+  - This is one of those situations where we can see that the K means may fail with the non-globular structures.
+
+ Question 4
+------------
+- Plot the silhouette diagram for the best clustering you have selected. Comment on the characteristics of the silhouette diagram that you think are informative about this clustering. 
+  Comment using the cluster numbers and their plots on the silhouette diagram.  
+
+- Silhoutte Diagram 
+
+	![image](../master/Silhoutte.PNG)  
+  
+  **The silhouette value is a measure of how similar an object is to its own cluster (cohesion) compared to other clusters (separation).**
+  
+- So in the above figure, the clusters (8)yellow,(4) and (3)blue are having data points with higher values which means that they are closely packed and are nearer to their centroids and far away from other centroids. And the width of the clusters depict the number of data points.
+ 
+  However, the clusters (5) green,(9) orange,(10)red are loosely packed as they have points that are away from the centroid of its own cluster.
+ 
+- The cluster (4) is a good cluster with greater number of points closely bounded followed by (8).
+  
+  On the whole the coefficient is very much nearer to 0.6 which means the points are well in cohesion and the clusters are well separated to some extent. Though this is not very great, they are not bad as well.
+ 
+ Question 5
+------------
+- Perform single-linkage hierarchical clustering for this data and cut the dendrogram to obtain 11 clusters. There are options/parameters in most toolboxes to generate a given number of clusters. Plot the 2-D scatter plot of the dataset showing data points of each of the 11 clusters with different color/symbol.  
+ 
+-Function Used: 
+
+```
+ z=sc.cluster.hierarchy.linkage(X_set,method='single',metric='euclidean)
+ r=sc.cluster.hierarchy.dendrogram(z,no_plot=False)
+```
+- Dendogram built:
+  
+  ![image](../master/Dendogram.png)
+
+- Cut the dendogram at the 3.2 distance to obtain the ideal 11 clusters.
+
+```
+ fc=fcluster(z,3.2,criterion='distance')
+```
+
+- Scatter plot of the clusters formed by the single link clustering.
+
+ ![image](../master/single link clusters.png)
+
+ Question 6
+------------
+
+- Mark any data points on this scatter plot that are clustered differently from your intuitive view of the correct clusters. Explain why Single-linkage clustering may have placed them in counter-intuitive clusters.
+
+ - Single Linkage clustering is a type of Agglomerative Hierarchical clustering where the clusters are merged when the nearest points between clusters have a minimum distance. 
+
+ - The clustering starts from the individual points starting at random and iteratively combines the clusters that have minimum distances between its nearest points.
+ 
+- Outlier points made into separate clusters.
+
+ ![image](../master/2e.jpeg)
+ 
+ - Except the points that are marked all the other are intuitively placed into separate clusters but the single linkage placed them into 2 clusters. This happened because it forms contingency clusters which is one of the major drawbacks of single linkage clusters. 
+ 
+ - Single linkage cannot identify the clusters that have data points between them, even if they are scarce it combines them. 
+
+ - All the clusters here have at least few data points between them , hence they are formed as one cluster. *** Proving that single link clusters fail with such data.***
 
 	
