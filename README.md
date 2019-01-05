@@ -3,7 +3,7 @@ Linear Regression
 
 - Data set Used: HW4GaussianClustersData (Please look in DATA folder)
 
-Question 1 djgsdfh
+Question 1 
 ------------
 
 - Plot the data on a 2-D scatter plot and mark by hand the boundaries of the ideal clusters that you would like discovered in this dataset. 		
@@ -15,7 +15,7 @@ Question 1 djgsdfh
   
   I have marked the clusters intuitively based on the alike nature of the points. 
   
-  ![image](../master/Intuitive_Clusters.jpeg) 
+  ![image](../master/Intuitive_Clusters.png) 
   
   
 Question 2
@@ -110,7 +110,7 @@ Question 3
  
 - Outlier points made into separate clusters.
 
- ![image](../master/2e.jpeg)
+ ![image](../master/2e.png)
  
  - Except the points that are marked all the other are intuitively placed into separate clusters but the single linkage placed them into 2 clusters. This happened because it forms contingency clusters which is one of the major drawbacks of single linkage clusters. 
  
