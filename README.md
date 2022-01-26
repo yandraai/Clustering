@@ -1,9 +1,7 @@
-Linear Regression 
-===================
 
 - Data set Used: HW4GaussianClustersData (Please look in DATA folder)
 
-Question 1 
+Sec 1 
 ------------
 
 - Plot the data on a 2-D scatter plot and mark by hand the boundaries of the ideal clusters that you would like discovered in this dataset. 		
@@ -18,7 +16,7 @@ Question 1
   ![image](../master/Intuitive_Clusters.png) 
   
   
-Question 2
+Section 2
 ------------
   
 - Run the k-means algorithm for k = 3, 5, 7, 9, 11, 13, 15, 17 and 19. Plot the total SSE and BIC values for the above values of k. 
@@ -34,7 +32,7 @@ Question 2
   
   **Hence k =11 is chosen as the best number of clusters.**
 
-Question 3
+Section 3
 ------------  
 - For the best number of clusters selected above, plot the scatter plot of the data showing the points of each cluster with a different color/symbol. 
   Mark the points on the scatter plot that belong to clusters other than what your intuition says. Why did k-means algorithm place them in these different clusters – explain very briefly.   
@@ -56,7 +54,7 @@ Question 3
   - In our example as well, the points marked are all points that are marked are nearer to the centroids that the k means chose and so are placed in that way, which is different from the intuition.
   - This is one of those situations where we can see that the K means may fail with the non-globular structures.
 
- Question 4
+ Section 4
 ------------
 - Plot the silhouette diagram for the best clustering you have selected. Comment on the characteristics of the silhouette diagram that you think are informative about this clustering. 
   Comment using the cluster numbers and their plots on the silhouette diagram.  
@@ -75,7 +73,7 @@ Question 3
   
   On the whole the coefficient is very much nearer to 0.6 which means the points are well in cohesion and the clusters are well separated to some extent. Though this is not very great, they are not bad as well.
  
- Question 5
+ Section 5
 ------------
 - Perform single-linkage hierarchical clustering for this data and cut the dendrogram to obtain 11 clusters. There are options/parameters in most toolboxes to generate a given number of clusters. Plot the 2-D scatter plot of the dataset showing data points of each of the 11 clusters with different color/symbol.  
  
@@ -99,7 +97,7 @@ Question 3
 
  ![image](../master/single link clusters.png)
 
- Question 6
+ Section 6
 ------------
 
 - Mark any data points on this scatter plot that are clustered differently from your intuitive view of the correct clusters. Explain why Single-linkage clustering may have placed them in counter-intuitive clusters.
